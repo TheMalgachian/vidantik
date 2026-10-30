@@ -52,6 +52,7 @@ a { color: inherit; }
 .band { padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
 .wrap { max-width: var(--max); margin-inline: auto; }
 .section { padding-block: clamp(56px, 8vw, 92px); }
+section[id] { scroll-margin-top: 64px; }
 .head { display: grid; gap: 12px; margin-bottom: 40px; justify-items: center; text-align: center; }
 .kicker { display: flex; align-items: center; gap: 12px; font-family: var(--f-display); font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; color: var(--brown); }
 .kicker::before, .kicker::after { content: ""; width: 28px; height: 1px; background: currentColor; }
@@ -79,7 +80,7 @@ a { color: inherit; }
 .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
 .logo { font-family: var(--f-display); font-weight: 700; font-size: 1.5rem; letter-spacing: .03em; text-decoration: none; }
 .nav { display: flex; gap: 22px; align-items: center; font-size: 1rem; }
-.nav a { text-decoration: none; opacity: .88; }
+.nav a { text-decoration: none; opacity: .88; white-space: nowrap; }
 .nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--f-display); font-weight: 700; font-size: 1rem; padding: 13px 22px; border: 2px solid var(--green); text-decoration: none; cursor: pointer; transition: background .15s ease, color .15s ease; }
 .btn-green { background: var(--green); color: var(--paper); }
@@ -92,7 +93,7 @@ a { color: inherit; }
 .menu-btn { display: none; align-items: center; gap: 8px; font: inherit; font-family: var(--f-display); font-weight: 700; font-size: 1rem; color: var(--paper); background: transparent; border: 2px solid color-mix(in srgb, var(--paper) 55%, transparent); padding: 8px 14px; cursor: pointer; }
 .menu-btn svg { width: 20px; height: 20px; }
 .callbar { display: none; }
-@media (max-width: 820px) {
+@media (max-width: 1060px) {
   .topbar .wrap { flex-wrap: wrap; row-gap: 0; }
   .menu-btn { display: inline-flex; }
   .nav { display: none; order: 3; width: 100%; flex-direction: column; align-items: stretch; gap: 0; padding-top: 8px; }
@@ -141,7 +142,10 @@ a { color: inherit; }
 .service li { display: grid; gap: 2px; padding-block: 14px; border-top: 1px dashed var(--line); }
 .service li b { color: var(--ink); font-weight: 600; }
 .service li span { color: var(--muted); font-size: 1rem; }
-@media (max-width: 820px) { .services { grid-template-columns: 1fr; } }
+.service-wide { grid-column: 1 / -1; }
+.service-wide ul { grid-template-columns: repeat(3, 1fr); column-gap: 28px; }
+.service-wide .btn { justify-self: start; }
+@media (max-width: 820px) { .services { grid-template-columns: 1fr; } .service-wide ul { grid-template-columns: 1fr; } .service-wide .btn { justify-self: stretch; text-align: center; } }
 
 /* Déroulé */
 .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; counter-reset: step; }
@@ -240,6 +244,14 @@ textarea { min-height: 120px; resize: vertical; }
       <rect x="17" y="34" width="7" height="7" fill="#f7f2df" stroke="#4a2a16" stroke-width="1.5"/>
       <rect x="40" y="34" width="7" height="7" fill="#f7f2df" stroke="#4a2a16" stroke-width="1.5"/>
     </symbol>
+    <symbol id="i-roof" viewBox="0 0 64 64">
+      <path d="M4 34 L32 12 L60 34 Z" fill="#8a4a2a" stroke="#4a2a16" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M16 25h32M10 30h44" stroke="#5e3218" stroke-width="1"/>
+      <rect x="42" y="14" width="6" height="10" fill="#8a4a2a" stroke="#4a2a16" stroke-width="1.5"/>
+      <rect x="12" y="34" width="40" height="20" fill="#e19a3a" stroke="#4a2a16" stroke-width="1.5"/>
+      <path d="M3 35h58" stroke="#5a5a5a" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M22 20c2-3 6-3 8 0" stroke="#2d5a3a" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </symbol>
     <symbol id="i-broom" viewBox="0 0 64 64">
       <path d="M44 6 L30 38" stroke="#8a4a2a" stroke-width="3" stroke-linecap="round" fill="none"/>
       <path d="M24 36 L36 41 L30 60 L12 54 Z" fill="#e19a3a" stroke="#4a2a16" stroke-width="1.5" stroke-linejoin="round"/>
@@ -260,6 +272,7 @@ textarea { min-height: 120px; resize: vertical; }
       <a href="#prestations">Prestations</a>
       <a href="#deroule">Déroulé</a>
       <a href="#recyclage">Recyclage</a>
+      <a href="toiture.html">Toiture</a>
       <a href="notre-travail.html">Notre travail</a>
       <a href="#avis">Avis</a>
       <a href="#faq">Questions</a>
@@ -332,6 +345,18 @@ textarea { min-height: 120px; resize: vertical; }
           <li><b>Syndrome de Diogène</b><span>Intervention discrète et bienveillante, en coordination avec la famille, le bailleur ou les services sociaux.</span></li>
           <li><b>Remise en état</b><span>Nettoyage approfondi pour un bien prêt à être vendu, loué ou réoccupé.</span></li>
         </ul>
+      </article>
+      <article class="service service-wide">
+        <header>
+          <svg aria-hidden="true"><use href="#i-roof"/></svg>
+          <h3>Entretien de toiture</h3>
+        </header>
+        <ul>
+          <li><b>Démoussage</b><span>Retrait de la mousse, du lichen et des salissures sur les tuiles.</span></li>
+          <li><b>Traitement anti-mousse</b><span>Produit appliqué après le nettoyage pour freiner la repousse.</span></li>
+          <li><b>Nettoyage des gouttières</b><span>Gouttières et descentes débarrassées des feuilles et débris.</span></li>
+        </ul>
+        <a class="btn btn-line" href="toiture.html">En savoir plus sur l'entretien de toiture</a>
       </article>
     </div>
   </div>
@@ -441,6 +466,7 @@ textarea { min-height: 120px; resize: vertical; }
             <option>Nettoyage après sinistre</option>
             <option>Succession</option>
             <option>Syndrome de Diogène</option>
+            <option>Nettoyage et entretien de toiture</option>
             <option>Autre</option>
           </select>
         </div>
