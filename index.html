@@ -93,7 +93,7 @@ section[id] { scroll-margin-top: 64px; }
 .menu-btn { display: none; align-items: center; gap: 8px; font: inherit; font-family: var(--f-display); font-weight: 700; font-size: 1rem; color: var(--paper); background: transparent; border: 2px solid color-mix(in srgb, var(--paper) 55%, transparent); padding: 8px 14px; cursor: pointer; }
 .menu-btn svg { width: 20px; height: 20px; }
 .callbar { display: none; }
-@media (max-width: 1060px) {
+@media (max-width: 1160px) {
   .topbar .wrap { flex-wrap: wrap; row-gap: 0; }
   .menu-btn { display: inline-flex; }
   .nav { display: none; order: 3; width: 100%; flex-direction: column; align-items: stretch; gap: 0; padding-top: 8px; }
@@ -124,6 +124,14 @@ section[id] { scroll-margin-top: 64px; }
 .signature { display: grid; gap: 2px; margin-top: 8px; }
 .signature b { font-family: var(--f-display); color: var(--green); font-size: 1.3rem; }
 .signature span { color: var(--muted); font-size: 1rem; }
+
+/* À propos */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: clamp(24px, 5vw, 56px); align-items: center; background: var(--paper); border: 1px solid var(--line); padding: clamp(24px, 4vw, 48px); }
+.about img { width: 100%; height: auto; }
+.about-text { display: grid; gap: 14px; }
+.about-text > p:first-child::first-letter { font-family: var(--f-display); font-weight: 700; color: var(--green); float: left; font-size: 3.4em; line-height: .9; margin: 4px 8px 0 0; }
+.about .signature { margin-top: 4px; }
+@media (max-width: 760px) { .about { grid-template-columns: 1fr; } .about img { width: min(320px, 100%); justify-self: center; } }
 
 /* Engagements */
 .promises { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding-block: 36px; }
@@ -274,6 +282,7 @@ textarea { min-height: 120px; resize: vertical; }
       <a href="#recyclage">Recyclage</a>
       <a href="toiture.html">Toiture</a>
       <a href="notre-travail.html">Notre travail</a>
+      <a href="#apropos">À propos</a>
       <a href="#avis">Avis</a>
       <a href="#faq">Questions</a>
       <a class="btn btn-ochre btn-sm" href="#contact">Devis gratuit</a>
@@ -390,6 +399,28 @@ textarea { min-height: 120px; resize: vertical; }
       <div class="stream"><h3>Revente</h3><p>Valorisation des meubles anciens, objets de brocante et de collection.</p></div>
       <div class="stream"><h3>Recyclage</h3><p>Métaux, bois, cartons et équipements électriques déposés en filières agréées.</p></div>
       <div class="stream"><h3>Déchetterie</h3><p>Dépôt des déchets résiduels dans le respect de la réglementation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band section" id="apropos">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">À propos de moi</span>
+      <h2>Un métier né d'une passion</h2>
+    </div>
+    <div class="about">
+      <img src="maison.png" width="462" height="202" alt="" loading="lazy">
+      <div class="about-text">
+        <p>Depuis tout petit, j’ai eu l’occasion d’aider les membres de ma famille à vider des maisons. C’est là qu’est née ma passion pour les objets anciens, les meubles et les histoires qu’ils racontent. Ce métier, je le connais de l’intérieur, et je comprends ce que vous vivez lorsque vous faites appel à moi.</p>
+        <p>Aujourd’hui, je l’exerce avant tout par passion. Chaque objet, chaque meuble a une valeur, qu’elle soit matérielle ou sentimentale, et je mets un point d’honneur à les traiter avec soin et respect. Leur donner une seconde vie, c’est aussi une façon de prolonger leur histoire.</p>
+        <p>Particuliers comme professionnels, je vous accompagne avec sérieux, écoute et bienveillance, pour que chaque intervention se déroule simplement et en toute confiance.</p>
+        <p>N’hésitez pas à me contacter : je serai ravi d’échanger avec vous sur votre projet.</p>
+        <div class="signature">
+          <b>Valentin Santailler</b>
+          <span>Vid'Antik · <a href="tel:+33744433539">07 44 43 35 39</a></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
