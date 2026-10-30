@@ -81,6 +81,7 @@ textarea { min-height: 150px; resize: vertical; }
 .ring-inner { border: var(--rule) solid var(--green); background: var(--cream); }
 .checker { height: calc(var(--sq) * 2 + var(--rule) * 2); border-block: var(--rule) solid var(--green); background-repeat: round repeat; }
 .site-ring { min-height: 100vh; }
+@media (max-width: 600px) { .site-ring { padding: var(--sq); } }
 .footer { background: var(--green-deep); color: var(--paper); }
 .footer .wrap { max-width: 1100px; padding-block: 24px; font-size: .95rem; opacity: .85; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
 @media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
